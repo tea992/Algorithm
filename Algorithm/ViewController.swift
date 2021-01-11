@@ -19,15 +19,16 @@ class ViewController: UIViewController {
 
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.testWeight()
-//        self.testInterval()
-        self.testLinkCache()
+//        self.weightTest()
+//        self.intervalTest()
+//        self.linkCacheTest()
+        self.bubbleSortTest()
     }
     
     
     
     /// 测试根据权重比，计算
-    func testWeight() {
+    func weightTest() {
         let items = [Weight(weight: 1, value: "1"),
                      Weight(weight: 10, value: "10"),
                      Weight(weight: 7, value: "7"),
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
     
     
     /// 测试时间间隔
-    func testInterval() {
+    func intervalTest() {
         
         let interval = Algorithm.interval()
         /// 2^8 = 126 最多重连8次 或者不需要重连、无网络、已经连接成功 都不再重连
@@ -58,11 +59,12 @@ class ViewController: UIViewController {
     }
     
     func reconnectError() {
-        self.testInterval()
+        self.intervalTest()
     }
     
     
-    func testLinkCache() {
+    /// 链表
+    func linkCacheTest() {
         let cache = LinkMap()
         cache.put("a", 10)
         cache.put("b", 11)
@@ -73,6 +75,14 @@ class ViewController: UIViewController {
         for (key, node) in cache.cache {
             print(key, node.val as Any)
         }
+    }
+    
+    
+    /// 冒泡排序
+    func bubbleSortTest() {
+        var arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 14, 15, 19, 20]
+        Sort.bubbleSort(&arr)
+        print(arr)
     }
 }
 
